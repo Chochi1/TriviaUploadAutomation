@@ -10,6 +10,7 @@ from dotenv import load_dotenv
 
 from upload_video import upload_video
 from create_description import create_youtube_description, create_youtube_tags
+from edit_video import cut_video_seconds
 
 import mysql.connector
 from datetime import datetime
@@ -55,6 +56,9 @@ try:
 
         print("\n Instagram")
         print("\n" + seo_desc + "\n \n"+ output)        
+
+        # Cut the video to 26 seconds
+        video_path = cut_video_seconds(0, 26, video_path)
 
         # Upload the video
         upload_video(title  + ' #trivia', hook, video_path, tags)
